@@ -7,6 +7,7 @@ Game::Game()
 	initScreen();
 
 	player_obj = new Player(this);
+	grp_obj = new Graphics();
 }
 
 Game::~Game()
@@ -14,6 +15,7 @@ Game::~Game()
 	unload();
 	
 	delete player_obj;
+	delete grp_obj;
 
 	CloseWindow();
 }
@@ -47,6 +49,7 @@ void Game::run()
 
 void Game::update()
 {
+	grp_obj->update();
 	player_obj->update();
 }
 
@@ -55,7 +58,9 @@ void Game::render()
 	BeginDrawing();
 	ClearBackground(BLACK);
 
+	grp_obj->render();
 	player_obj->render();
+
 
 	EndDrawing();
 }

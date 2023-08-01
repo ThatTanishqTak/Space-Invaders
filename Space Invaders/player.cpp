@@ -52,7 +52,7 @@ void Player::render()
 	else
 		DrawTexture(playerIdle, static_cast<int>(playerPos.x), static_cast<int>(playerPos.y), WHITE);
 
-	if (isShooting)
+	if (isShooting) 
 		DrawTexture(playerLaser, static_cast<float>(laserPos.x), static_cast<float>(laserPos.y), WHITE);
 }
 
