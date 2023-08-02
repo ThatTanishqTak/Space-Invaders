@@ -15,8 +15,14 @@ public:
 	void render();
 
 private:
+	float speedLineSpeed;
+	
+	Vector2 speedLinePos;
+
 	Texture2D background;
 	Texture2D speedLine;
+	Texture2D starBig;
+	Texture2D starSmall;
 
 	void unload();
 };
