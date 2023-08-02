@@ -8,14 +8,12 @@ Game::Game()
 
 	player_obj = new Player(this);
 	grp_obj = new Graphics();
+	ene_obj = new Enemy(this);
 }
 
 Game::~Game()
 {
 	unload();
-	
-	delete player_obj;
-	delete grp_obj;
 
 	CloseWindow();
 }
@@ -51,6 +49,7 @@ void Game::update()
 {
 	grp_obj->update();
 	player_obj->update();
+	ene_obj->update();
 }
 
 void Game::render()
@@ -60,12 +59,14 @@ void Game::render()
 
 	grp_obj->render();
 	player_obj->render();
-
+	ene_obj->render();
 
 	EndDrawing();
 }
 
 void Game::unload()
 {
-
+	delete player_obj;
+	delete grp_obj;
+	delete ene_obj;
 }

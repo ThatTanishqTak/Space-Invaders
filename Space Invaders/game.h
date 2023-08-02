@@ -2,6 +2,7 @@
 
 #include "raylib.h"
 #include "player.h"
+#include "enemy.h"
 #include "graphics.h"
 
 class Game
@@ -19,6 +20,7 @@ public:
 private:
 	Player* player_obj;
 	Graphics* grp_obj;
+	Enemy* ene_obj;
 
 	void initVariable();
 	void initScreen();

@@ -41,12 +41,12 @@ void Player::update()
 			isShooting = false;
 	}
 
-	if (playerPos.x <= 0.0f)
-		playerPos.x = 0.0f;
+	if (playerPos.x <= 0)
+		playerPos.x = 0;
 	if (playerPos.x + playerIdle.width >= game_obj->windowWidth)
 		playerPos.x = game_obj->windowWidth - playerIdle.width;
-	if (playerPos.y <= 0.0f)
-		playerPos.y = 0.0f;
+	if (playerPos.y <= 0)
+		playerPos.y = 0;
 	if (playerPos.y + playerIdle.height >= game_obj->windowHeight)
 		playerPos.y = game_obj->windowHeight - playerIdle.height;
 }

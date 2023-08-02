@@ -2,8 +2,6 @@
 
 #include "raylib.h"
 
-class Game;
-
 class Graphics
 {
 public:
