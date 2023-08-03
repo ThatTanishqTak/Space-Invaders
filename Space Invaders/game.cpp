@@ -66,7 +66,7 @@ void Game::render()
 
 void Game::unload()
 {
-	delete player_obj;
 	delete grp_obj;
+	delete player_obj;
 	delete ene_obj;
 }

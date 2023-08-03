@@ -18,6 +18,7 @@ public:
 	void render();
 
 private:
+	Game* game_obj;
 	Player* player_obj;
 	Graphics* grp_obj;
 	Enemy* ene_obj;

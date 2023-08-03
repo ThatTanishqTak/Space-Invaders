@@ -14,7 +14,9 @@ Graphics::~Graphics()
 void Graphics::initVariable()
 {
 	speedLineSpeed = 20.0f;
-	speedLinePos = { 40,-100 };
+	
+	spawnInterval = 1000.0f;
+	lastSpawnTime = GetTime();
 }
 
 void Graphics::initTexture()
@@ -25,17 +27,35 @@ void Graphics::initTexture()
 	starSmall = LoadTexture("textures/Background/starSmall.png");
 }
 
+void Graphics::spawnLine()
+{
+	currentTime = GetTime();
+	if (currentTime - lastSpawnTime >= spawnInterval)
+	{
+		randomX = GetRandomValue(0, 1080 - speedLine.width);
+		randomY = GetRandomValue(720 - speedLine.height, 720 - speedLine.height);
+
+		spawnedLines.push_back({ randomX, randomY });
+		lastSpawnTime = currentTime;
+	}
+
+	speedLinePos.y += speedLineSpeed;
+	if (speedLinePos.y >= 720)
+		speedLinePos.y = -static_cast<float>(speedLine.height);
+}
+
 void Graphics::update()
 {
-	speedLinePos.y += speedLineSpeed;
+	spawnLine();
 }
 
 void Graphics::render()
 {
 	DrawTexturePro(background, { 0, 0, 1080, 720 }, { 0, 0, 1080, 720 }, { 0, 0 }, 0.0f, WHITE);
-	DrawTextureV(speedLine, speedLinePos, WHITE);
-	DrawTexture(starBig, 540, 100, WHITE);
-	DrawTexture(starSmall, 200, 100, WHITE);
+	for(const auto& pos : spawnedLines)
+	{
+		DrawTexture(speedLine, static_cast<int>(pos.x), static_cast<int>(pos.y), WHITE);
+	}
 }
 
 void Graphics::unload()
